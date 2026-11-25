@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fotosyntesfabriken – fotosyntes och cellandning (åk 4–6)</title>
+<meta name="description" content="Fyll fabriken i bladet: vatten, koldioxid och ljus in – socker och syre ut. På natten vänder växten och andas. Biologi åk 4–6: fotosyntes och cellandning. Gratis, ingen inloggning.">
+<meta name="theme-color" content="#faf7f2">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="Fotosyntesfabriken">
+<meta property="og:description" content="Vatten, koldioxid och ljus in – socker och syre ut. Lär dig fotosyntes och cellandning i bladets fabrik. Biologi åk 4–6.">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.skolappar.com/kotten.js" defer></script>
+</head>
+<body>
+
+<div id="startskarm">
+  <div class="sk-inner">
+    <img class="sk-ikon" src="icon-192.png" alt="" width="84" height="84">
+    <h1>Fotosyntesfabriken</h1>
+    <p class="sk-tagline">Vad går in i bladet – och vad kommer ut?</p>
+    <div class="sk-taggar">
+      <span>Biologi</span><span>Åk 4–6</span><span>Fotosyntes</span>
+    </div>
+    <button class="sk-play" id="spela" aria-label="Spela Fotosyntesfabriken">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      Spela
+    </button>
+    <p class="sk-fot">Gratis · ingen inloggning · skolappar.com</p>
+    <details class="sk-laroplan">
+      <summary>Läroplanskoppling (Lgr22)</summary>
+      <p><b>Biologi, åk 4–6, centralt innehåll:</b> ”Näringskedjor och kretslopp i närmiljön. Djurs, växters och svampars samspel med varandra och hur några miljöfaktorer påverkar dem. Fotosyntes och cellandning.”</p>
+      <p>Bladet är en fabrik. Barnet trycker på en sak i brickan och sedan på en plats i fabriken: in på vänstersidan, ut på högersidan. Fotosyntesen kräver vatten, koldioxid och ljus och ger socker och syre. Cellandningen är motsatsen: socker och syre in, koldioxid, vatten och energi ut. Fabriken räknas ut direkt – stämmer inte byggstenarna säger Kotten vad som fattas eller vad som hör till den andra sidan, och barnet får försöka igen utan att något går förlorat. Nivå 1–2 bygger fotosyntesen (nivå 2 med jord och kväve som lockar fel), nivå 3 kräver att barnet även sätter det som bildas, nivå 4 vänder hela reaktionen till cellandning. Källa: Skolverket, läroplanen för grundskolan (Lgr22).</p>
+    </details>
+  </div>
+</div>
+
+<main id="spelet" hidden>
+  <header class="hud">
+    <div class="hud-vanster">
+      <span class="niva-prickar" id="nivaPrickar" aria-hidden="true"></span>
+      <span class="hud-text" id="nivaText">Nivå 1</span>
+    </div>
+    <div class="hud-mitten">
+      <span class="stjarnor" id="stjarnor" aria-label="0 stjärnor">☆☆☆☆</span>
+    </div>
+    <div class="hud-hoger">
+      <button class="knapp" id="upprepa" aria-label="Läs upp målet igen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h9a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7H4V3L0 6.5 4 10z"/></svg>
+      </button>
+      <button class="knapp" id="ljud" aria-label="Stäng av ljud" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path class="ljud-streck" d="M16 8l5 8M21 8l-5 8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="spel">
+    <h2 class="mal" id="mal">Fotosyntesen: sätt in det bladet behöver.</h2>
+    <div class="brada" id="brada">
+      <svg id="tavla" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tavla-titel">
+        <title id="tavla-titel">Ett blad med platser för det som går in och det som kommer ut</title>
+        <g id="lager-ror"></g>
+        <g id="lager-plats"></g>
+        <g id="lager-del"></g>
+        <g id="lager-kotten"></g>
+      </svg>
+    </div>
+    <div class="bricka" id="bricka" role="group" aria-label="Saker att sätta i fabriken"></div>
+    <p class="hjalp" id="hjalp">Tryck på en sak, sedan på en plats i bladet.</p>
+  </section>
+
+  <div class="ruta" id="ruta" hidden>
+    <div class="ruta-inner">
+      <svg class="ruta-kotten" id="rutaKotten" viewBox="0 0 200 200" aria-hidden="true"></svg>
+      <p class="ruta-titel" id="rutaTitel">Fabriken går!</p>
+      <p class="ruta-text" id="rutaText"></p>
+      <p class="ruta-formel" id="rutaFormel"></p>
+      <button class="knapp-stor" id="rutaKnapp">Nästa nivå</button>
+    </div>
+  </div>
+</main>
+
+<script src="app.js" defer></script>
+</body>
+</html>

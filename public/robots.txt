@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fotosyntesfabriken.shipholm.dev/sitemap.xml
