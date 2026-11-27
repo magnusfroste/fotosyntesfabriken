@@ -364,25 +364,8 @@
   var roster = null;
   function tala(text) {
           try { if (window.__rost && window.__rost(text, true)) return; } catch (e) { }
-    if (!S.ljud || !("speechSynthesis" in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(text);
-      u.lang = "sv-SE"; u.rate = 0.95; u.pitch = 1.02;
-      if (roster) u.voice = roster;
-      window.speechSynthesis.speak(u);
-    } catch (e) { /* talsyntes är aldrig ett krav */ }
-  }
-  function valjRoster() {
-    if (!("speechSynthesis" in window)) return;
-    try {
-      var alla = window.speechSynthesis.getVoices() || [];
-      for (var i = 0; i < alla.length; i++) if (/sv[-_]SE/i.test(alla[i].lang)) { roster = alla[i]; break; }
-    } catch (e) {}
-  }
-  if ("speechSynthesis" in window) {
-    valjRoster();
-    window.speechSynthesis.onvoiceschanged = valjRoster;
+    if (!S.ljud) return;
+        console.warn('saknar mp3:', text);
   }
 
   function kottensEvent(namn, varde) {
@@ -659,7 +642,7 @@
       this.setAttribute("aria-pressed", S.ljud ? "false" : "true");
       this.setAttribute("aria-label", S.ljud ? "Stäng av ljud" : "Sätt på ljud");
       if (!S.ljud) {
-        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        if (window.__rostStopp) window.__rostStopp();
         kottensEvent("sound_off");
       } else klang(660, 0.1);
     });
